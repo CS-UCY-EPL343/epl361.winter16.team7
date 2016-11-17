@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: e89b5330205455642886c79017f01415
+timeCreated: 1479322359
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Caneletter Sans Personal Use
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a9e4a55d95b1d454281a151c15d345d7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
