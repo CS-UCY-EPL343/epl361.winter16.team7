@@ -9,11 +9,12 @@ public class SettingManager: MonoBehaviour {
 	public Dropdown textureQualityDropdown;
 	public Dropdown antialiasingDropdown;
 	public Dropdown vSyncDopwdown;
-	public Slider musicVolumeSlider;
+    public Slider musicVolumeSlider;
 	public Button applyButton;
 
-	public AudioSource musicSource;
-	public Resolution[] resolutions;
+    private AudioSource musicSource;
+
+    public Resolution[] resolutions;
 	public GameSettings gameSettings;
 
 	void OnEnable(){
@@ -65,7 +66,8 @@ public class SettingManager: MonoBehaviour {
 	}
 
 	public void OnMusicVolumeChange(){
-		musicSource.volume =gameSettings.musicVolume= musicVolumeSlider.value;
+        musicSource = Object.FindObjectOfType<AudioSource>();
+        musicSource.volume =gameSettings.musicVolume= musicVolumeSlider.value;
 	}
 	public void OnApplyButtonClick(){
 		SaveSettings();
