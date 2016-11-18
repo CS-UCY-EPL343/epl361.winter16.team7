@@ -55,7 +55,7 @@ public class SettingManager: MonoBehaviour {
 
 	public void OnAntialiasingChange(){
 
-		QualitySettings.antiAliasing = gameSettings.antialiasing=  (int) Mathf.Pow (2f, antialiasingDropdown.value);
+		QualitySettings.antiAliasing = gameSettings.antialiasing=2*antialiasingDropdown.value;
 
 	}
 
@@ -79,7 +79,7 @@ public class SettingManager: MonoBehaviour {
 	public void LoadSettings(){
 		gameSettings = JsonUtility.FromJson<GameSettings> (File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));
 		musicVolumeSlider.value = gameSettings.musicVolume;
-		antialiasingDropdown.value = gameSettings.antialiasing;
+		antialiasingDropdown.value = gameSettings.antialiasing/2;
 		vSyncDopwdown.value = gameSettings.vSync;
 		textureQualityDropdown.value = gameSettings.textureQuality;
 		resolutionDropdown.value = gameSettings.resolutionIndex;
