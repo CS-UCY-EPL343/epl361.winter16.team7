@@ -35,7 +35,7 @@ public class SettingManager: MonoBehaviour {
 			resolutionDropdown.options.Add(new Dropdown.OptionData(resolution.ToString()));
 		
 		}
-		LoadSettings ();
+	//	LoadSettings ();
 	}
 
 	public void OnFullscreenToggle(){

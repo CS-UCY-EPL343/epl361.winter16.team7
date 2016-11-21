@@ -60,7 +60,7 @@ public class Login : MonoBehaviour
 
 
         }
-        if (Password != "" && Username != "")
+        if (Password != ""  && Username != "")
         {
             a = 1;
         }
