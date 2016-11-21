@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class playvideo : MonoBehaviour {
 	public MovieTexture movie;
-	private AudioSource audio; 
+	private AudioSource audio1; 
 
 	void Start () {
 		movie.loop = true; 
 		GetComponent<RawImage> ().texture = movie as MovieTexture;
-		audio = GetComponent<AudioSource> ();
-		audio.clip = movie.audioClip;
+		audio1 = GetComponent<AudioSource> ();
+		audio1.clip = movie.audioClip;
 		movie.Play ();
-		audio.Play ();
+		audio1.Play ();
 	
 	}
 	
