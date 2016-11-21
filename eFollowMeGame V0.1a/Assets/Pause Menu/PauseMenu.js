@@ -6,7 +6,7 @@ private var pauseEnabled = false;
 function Start(){
 	pauseEnabled = false;
 	Time.timeScale = 1;
-	AudioListener.volume = 1;
+	//AudioListener.volume = 1;
 	Cursor.visible = false;
 }
 
@@ -20,14 +20,14 @@ function Update(){
 			//unpause the game
 			pauseEnabled = false;
 			Time.timeScale = 1;
-			AudioListener.volume = 1;
+		//	AudioListener.volume = 1;
 			Cursor.visible = false;			
 		}
 		
 		//else if game isn't paused, then pause it
 		else if(pauseEnabled == false){
 			pauseEnabled = true;
-			AudioListener.volume = 0;
+		//	AudioListener.volume = 0;
 			Time.timeScale = 0;
 			Cursor.visible = true;
 		}
