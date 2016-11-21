@@ -35,7 +35,7 @@ public class SettingManager: MonoBehaviour {
 			resolutionDropdown.options.Add(new Dropdown.OptionData(resolution.ToString()));
 		
 		}
-	//	LoadSettings ();
+		LoadSettings ();
 	}
 
 	public void OnFullscreenToggle(){
@@ -46,7 +46,9 @@ public class SettingManager: MonoBehaviour {
 
 	public void OnResolutionChange(){
 		Screen.SetResolution (resolutions [resolutionDropdown.value].width, resolutions [resolutionDropdown.value].height, Screen.fullScreen);
-	}
+        gameSettings.resolutionIndex = resolutionDropdown.value;
+
+    }
 
 	public void OnTextureQualityChange(){
 
@@ -80,12 +82,12 @@ public class SettingManager: MonoBehaviour {
 
 	public void LoadSettings(){
 		gameSettings = JsonUtility.FromJson<GameSettings> (File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));
-		musicVolumeSlider.value = gameSettings.musicVolume;
-		antialiasingDropdown.value = gameSettings.antialiasing/2;
-		vSyncDopwdown.value = gameSettings.vSync;
-		textureQualityDropdown.value = gameSettings.textureQuality;
+        musicVolumeSlider.value = Object.FindObjectOfType<AudioSource>().volume;//gameSettings.musicVolume;
+        antialiasingDropdown.value = QualitySettings.antiAliasing;//gameSettings.antialiasing/2;
+        vSyncDopwdown.value = QualitySettings.vSyncCount;// gameSettings.vSync;
+        textureQualityDropdown.value = QualitySettings.masterTextureLimit;// gameSettings.textureQuality;
 		resolutionDropdown.value = gameSettings.resolutionIndex;
-		fullscreenToggle.isOn = gameSettings.fullscreen;
+        fullscreenToggle.isOn = Screen.fullScreen;// gameSettings.fullscreen;
 
 	}
 

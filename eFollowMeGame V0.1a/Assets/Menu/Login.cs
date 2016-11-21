@@ -51,7 +51,7 @@ public class Login : MonoBehaviour
         Password = password.GetComponent<InputField>().text;
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if ((Password != "" && Username != "") && (Password.Length >= 6 && Password.Length <= 16))
+            if ((Password != "" && Username != "") && (Password.Length >= 6 && Password.Length <= 16) && (Username.Length >= 4 && Password.Length <= 15))
             {
                 //Application.LoadLevel(3);
                 SceneManager.LoadScene(3);
@@ -60,7 +60,7 @@ public class Login : MonoBehaviour
 
 
         }
-        if ((Password != ""  && Username != "") && (Password.Length>=6 && Password.Length <=16))
+        if ((Password != ""  && Username != "") && (Password.Length>=6 && Password.Length <=16) && (Username.Length >= 4 && Username.Length <= 15))
         {
             a = 1;
         }
