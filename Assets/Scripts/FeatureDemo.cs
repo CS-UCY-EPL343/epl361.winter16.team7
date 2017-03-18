@@ -23,7 +23,7 @@ namespace PixelCrushers.DialogueSystem.Examples {
 		
 		void Start() {
 			if (questLogWindow == null) questLogWindow = FindObjectOfType<QuestLogWindow>();
-			DialogueManager.ShowAlert("Πατήσε " + menuKey + " για το Μενού");
+			DialogueManager.ShowAlert("Πάτησε " + menuKey + " για το Μενού");
 		}
 		
 		void Update() {
@@ -59,15 +59,20 @@ namespace PixelCrushers.DialogueSystem.Examples {
 				SetMenuStatus(false);
 				LoadGame();
 			}
-			if (GUI.Button(new Rect(10, 210, windowRect.width - 20, 48), "Clear Saved Game")) {
+			if (GUI.Button(new Rect(10, 210, windowRect.width - 20, 48), "Έξοδος Παιχνιδιού")) {
 				SetMenuStatus(false);
-				ClearSavedGame();
+				doExitGame ();
 			}
 			if (GUI.Button(new Rect(10, 260, windowRect.width - 20, 48), "Κλείσιμο Μενού")) {
 				SetMenuStatus(false);
 			}
 		}
-		
+
+		private void doExitGame()
+		{
+			Application.Quit();
+		}
+
 		private void SetMenuStatus(bool open) {
 			isMenuOpen = open;
 			if (open) windowRect = scaledRect.GetPixelRect();
@@ -87,7 +92,7 @@ namespace PixelCrushers.DialogueSystem.Examples {
 		private void SaveGame() {
 			string saveData = PersistentDataManager.GetSaveData();
 			//PlayerPrefs.SetString("SavedGame", saveData);
-			File.WriteAllText (Application.persistentDataPath + "/savegame.json", saveData);
+			File.WriteAllText (Application.persistentDataPath + "/savedgame.json", saveData);
 
 
 			Debug.Log("Save Game Data: " + saveData);
@@ -98,7 +103,7 @@ namespace PixelCrushers.DialogueSystem.Examples {
 			
 			if (true) {
 				
-				string saveData = (File.ReadAllText(Application.persistentDataPath + "/savegame.json"));
+				string saveData = (File.ReadAllText(Application.persistentDataPath + "/savedgame.json"));
 
 				//string saveData = PlayerPrefs.GetString("SavedGame");
 				Debug.Log("Load Game Data: " + saveData);
