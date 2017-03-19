@@ -6,7 +6,7 @@ using PixelCrushers.DialogueSystem;
 public class ShowOnScreen : MonoBehaviour {
 	public Texture PhoneTexture;
 	public Texture MessageTexture;
-	public Texture MessageScreenTexture;
+	public Texture PhoneScreenTexture;
 	public GameObject showtest;
 	bool sPhone = false;
 	bool showing = false;
@@ -35,10 +35,11 @@ public class ShowOnScreen : MonoBehaviour {
 
 
 
-		
+
 		if (sPhone && showPhone) {
-			
-			GUI.DrawTexture (new Rect (400, 120, 331, 640), MessageScreenTexture);
+			float width = 268.11f;
+			float height = 518.4f;
+			GUI.DrawTexture (new Rect ((Screen.width / 2) - (width/2), (Screen.height / 2) - (height/2), width, height), PhoneScreenTexture);
 		}
 
 
@@ -84,7 +85,7 @@ public class ShowOnScreen : MonoBehaviour {
 
 			if (Input.GetButtonDown ("mShow")) {
 
-				if (!showing) {
+			if (!showing && showPhone) {
 					//Debug.LogError ("show");
 					sPhone = true;
 					showing = true;
