@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class ChangeSize : MonoBehaviour {
 
@@ -44,12 +45,18 @@ public class ChangeSize : MonoBehaviour {
 
 		if (small) {
 			x = x - offset.x;
+
 			y = y - offset.y;
+
 			z = z - offset.z;
+
 		
 			if (Scale.x < x) {
 				
 				GameObject.FindWithTag ("Player").transform.localScale = new Vector3 (x, y, z);
+				DialogueLua.SetVariable("PlayerX", GameObject.FindWithTag ("Player").transform.localScale.x);
+				DialogueLua.SetVariable("PlayerY", GameObject.FindWithTag ("Player").transform.localScale.y);
+				DialogueLua.SetVariable("PlayerZ", GameObject.FindWithTag ("Player").transform.localScale.z);
 			} else {
 				small = false;
 			}
@@ -64,6 +71,9 @@ public class ChangeSize : MonoBehaviour {
 			if (Scale.x > x) {
 
 				GameObject.FindWithTag ("Player").transform.localScale = new Vector3 (x, y, z);
+				DialogueLua.SetVariable("PlayerX", GameObject.FindWithTag ("Player").transform.localScale.x);
+				DialogueLua.SetVariable("PlayerY", GameObject.FindWithTag ("Player").transform.localScale.y);
+				DialogueLua.SetVariable("PlayerZ", GameObject.FindWithTag ("Player").transform.localScale.z);
 			} else {
 				big = false;
 			}
