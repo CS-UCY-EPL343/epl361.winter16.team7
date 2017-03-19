@@ -16,7 +16,7 @@ namespace PixelCrushers.DialogueSystem.Examples {
         public KeyCode menuKey = KeyCode.Escape;
 		public GUISkin guiSkin;
 		public QuestLogWindow questLogWindow;
-		
+		public GameObject[] toDisableWhenMenuIsOpen;
 		private bool isMenuOpen = false;
 		private Rect windowRect = new Rect(0, 0, 500, 500);
 		private ScaledRect scaledRect = ScaledRect.FromOrigin(ScaledRectAlignment.MiddleCenter, ScaledValue.FromPixelValue(300), ScaledValue.FromPixelValue(320));
@@ -35,6 +35,16 @@ namespace PixelCrushers.DialogueSystem.Examples {
 			//if (!DialogueManager.IsConversationActive && !isMenuOpen && !IsQuestLogOpen ()) {
 			//	Screen.lockCursor = true;
 			//}
+			if (isMenuOpen) {
+				for (int i = 0; i < toDisableWhenMenuIsOpen.Length; i++) {
+					toDisableWhenMenuIsOpen [i].SetActive (false);
+				}
+			} else {
+				for (int i = 0; i < toDisableWhenMenuIsOpen.Length; i++) {
+					if (toDisableWhenMenuIsOpen [i].activeSelf==false) 
+						toDisableWhenMenuIsOpen [i].SetActive (true);
+				}
+			}
 		}
 		
 		void OnGUI() {
@@ -66,6 +76,7 @@ namespace PixelCrushers.DialogueSystem.Examples {
 			if (GUI.Button(new Rect(10, 260, windowRect.width - 20, 48), "Κλείσιμο Μενού")) {
 				SetMenuStatus(false);
 			}
+
 		}
 
 		private void doExitGame()
@@ -101,7 +112,7 @@ namespace PixelCrushers.DialogueSystem.Examples {
 	
 		private void LoadGame() {
 			
-			if (true) {
+			if (File.Exists((Application.persistentDataPath + "/savedgame.json"))) {
 				
 				string saveData = (File.ReadAllText(Application.persistentDataPath + "/savedgame.json"));
 
