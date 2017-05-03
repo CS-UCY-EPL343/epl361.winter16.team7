@@ -19,7 +19,8 @@ public class Setters : MonoBehaviour {
 			DialogueLua.SetVariable ("userpass", "@@@");
 		}
 
-
+		Debug.Log(DialogueLua.GetVariable ("Username").AsString);
+		Debug.Log(DialogueLua.GetVariable ("userpass").AsString);
 	}
 	
 	// Update is called once per frame

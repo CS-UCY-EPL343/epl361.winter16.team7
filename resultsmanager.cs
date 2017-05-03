@@ -109,7 +109,7 @@ public class resultsmanager : MonoBehaviour {
 		});
 
 	}
-
+	string[] qattributes;
 	/// <summary>
 	/// Raises the my value change event.
 	/// </summary>
@@ -119,7 +119,8 @@ public class resultsmanager : MonoBehaviour {
 		if (d.value == 0) {
 			
 			quiz.SetActive (true);
-			int n = RandomNodeLuaFunctions.listNodes.Count;
+			quizDropdown.options.Clear ();
+			int n = qattributes.Length - 1;
 			for (int i = 0; i < n; i++) {
 				quizDropdown.options.Add (new Dropdown.OptionData ("Ερώτηση " + (i + 1)));
 			}
@@ -178,6 +179,10 @@ public class resultsmanager : MonoBehaviour {
 
 	}
 
+	//for (int i = 0; i < attributes.Length; i++)
+	//	Debug.Log (attributes[i]);
+
+
 	/// <summary>
 	/// Raises the my value change quiz event.
 	/// </summary>
@@ -185,11 +190,12 @@ public class resultsmanager : MonoBehaviour {
 	public void OnMyValueChangeQuiz(Dropdown d)
 	{
 
-		if (d.value+1 > RandomNodeLuaFunctions.listNodes.Count)
+		if (d.value+1 >= qattributes.Length)
 			return;
 	//	if (d.value == 0) {
-			question.text = quizQuestions [RandomNodeLuaFunctions.listNodes[d.value]-1];
-			Results.text = quizAnswers [RandomNodeLuaFunctions.listNodes[d.value]-1];
+		//Debug.Log(qattributes[d.value]);
+		question.text = quizQuestions [int.Parse(qattributes[d.value])-1];
+		Results.text = quizAnswers [int.Parse(qattributes[d.value])-1];
 		
 		//}
 	}
@@ -212,10 +218,16 @@ public class resultsmanager : MonoBehaviour {
 			for (int i = 0; i < disable.Length; i++) {
 				disable[i].SetActive (false);
 			}
-			SaveGame ();
+
 			Screen.lockCursor = false;
         Time.timeScale = 0;
-       	
+		//	Debug.Log ("i got :" + DialogueLua.GetVariable ("questionString").AsString);
+		 qattributes = DialogueLua.GetVariable("questionString").AsString.Split (' ');
+
+			//for (int i = 0; i < qattributes.Length; i++) {
+			//	Debug.Log ("aa = " + qattributes [i]);
+			//}
+
 		showUI ();
 		}
     }
@@ -260,7 +272,7 @@ public class resultsmanager : MonoBehaviour {
 	/// <summary>
 	/// Saves the game.
 	/// </summary>
-	private void SaveGame() {
+	public void SaveGame() {
 		if (Login.username_logged == null && Login.password_logged == null) {
 			
 			return;

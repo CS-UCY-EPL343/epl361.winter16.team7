@@ -34,6 +34,7 @@ public class RandomNodeLuaFunctions : MonoBehaviour
 
     void OnEnable()
     {
+		listNodes.Clear ();
        // Lua.RegisterFunction("RandomNodeOrder", this, typeof(RandomNodeLuaFunctions).GetMethod("RandomNodeOrder"));
         Lua.RegisterFunction("GetNextNode", this, typeof(RandomNodeLuaFunctions).GetMethod("GetNextNode"));
 		RandomNodeOrder (NUMBER_OF_NODES);
@@ -79,11 +80,19 @@ public class RandomNodeLuaFunctions : MonoBehaviour
 		for (int i=0;i<nodes.Count;i++){
 			listNodes.Add (nodes [i]);
 		}
-		var savelist = "saving: ";
+		var savelist = "";
+
 		for (int i=0;i<listNodes.Count;i++){
 			savelist += listNodes [i] + " ";
 		}
-		Debug.Log(savelist);
+
+		if (DialogueLua.GetVariable("questionString").AsString.Equals("@@@")){
+			
+			DialogueLua.SetVariable ("questionString", savelist);}
+
+		/*var attributes = savelist.Split (' ');
+		for (int i = 0; i < attributes.Length; i++)
+			Debug.Log (attributes[i]);*/
         // Log it:
         var s = "Random node order: ";
         for (int i = 0; i < nodes.Count; i++)
