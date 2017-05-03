@@ -62,15 +62,7 @@ var res = JSON.parse( '<?php echo json_encode($rows); ?>' );
 var count = Object.keys(res).length;
 var i=0;
 for (var i = 0; i < count; i++) {
-	document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>"); 
-	document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>"); 
-	document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>"); 
-		document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>"); 
-	document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>"); 
-	document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>"); 
-		document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>"); 
-	document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>"); 
-	document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>"); 
+	document.write("<li>"+"<mark>"+res[i].username+ "</mark>"+"<small>"+ res[i].score+"</small>"+"</li>");
 }
 
 </script>
